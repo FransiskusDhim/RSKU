@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Tentang Kami</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="index.html"><span></span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login.html">Tambah Dokter</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login2.html">Tambah Klinik</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login3.html">Pendaftaran Pasien</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login4.html">Pendaftaran Antrian</a></li>
+
+
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Cari.html">Cari Pasien</a></li>
+	<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Antrian.html">List Antrian</a></li>
+						<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Dokter.html">Dokter Spesialis</a></li>
+				<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Klinik.html">Klinik Spesialis</a></li>	
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/TentangKami.html">Tentang Kami</a></li>
+
+
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>Selamat Datang</p>
+						<h2>Tentang Kami 
+<br>
+SEJARAH
+<br>
+
+
+Rumah Sakit YK dan merupakan pengembangan tempat Praktek Pribadi yang dimulai sejak tahun 1967. Dari Praktek Pribadi kemudian berkembang menjadi Klinik 24 jam dan Rumah Bersalin Simpangan dan juga mengatasi berbagai jenis penyakit.
+
+Seiring dengan berjalannya waktu, RS YK memperluas tanah dan bangunannya.
+<br>
+<br>
+		<!-- Footer -->
+			<footer id="footer">
+
+						<ul class="icons">
+						<li><a href="https://twitter.com/FransiskusDhim"class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.facebook.com/Fransiskusdhim?ref=bookmarks" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/fransiskusdms/"class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						</footer>
+
+<center>Lokasi Kita</center>
+</h2>
+					</header>
+				</div>
+			</section>
+ 
+		<head>
+       
+		
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #map {
+                height: 100%;
+                width: 100%
+            }
+            /* Optional: Makes the sample page fill the window. */
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+
+    </head>
+    <body onload=loadMaps()>
+	
+	
+	
+                      
+<div id="map"/></div
+
+      
+		</div>
+<script>
+    var map;
+    function loadMaps() {
+        var url = "http://202.94.83.190:8080/165314017RS/webresources/Location";
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+        
+                var obj = JSON.parse(this.responseText);
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 15, center: {lat: obj[0].lat, lng: obj[0].lng}, });
+                var marker = [];
+                for (var i = 0; i < obj.length; i++) {
+                    marker[i] = new google.maps.Marker({position: {lat: obj[i].lat, lng: obj[i].lng}, map: map});
+                }
+            }
+        };
+        xhttp.open("GET", url, true);
+        xhttp.send();
+    }
+   
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnD2l64I6G6fUkPpc3D79Jcau30v8xEKE&callback=initMap"
+async defer></script>
+
+</body>
+
+
+		
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

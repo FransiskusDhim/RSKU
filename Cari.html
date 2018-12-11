@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Cari Pasien</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+     	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="index.html"><span></span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login.html">Tambah Dokter</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login2.html">Tambah Klinik</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login3.html">Pendaftaran Pasien</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login4.html">Pendaftaran Antrian</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Cari.html">Cari Pasien</a></li>
+	<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Antrian.html">List Antrian</a></li>
+						<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Dokter.html">Dokter Spesialis</a></li>
+				<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Klinik.html">Klinik Spesialis</a></li>	
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/TentangKami.html">Tentang Kami</a></li>
+
+
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>Selamat Datang</p>
+						<h2>Cari Pasien</h2>
+					</header>
+				</div>
+			</section>
+<center><br/>
+No Rekam Medis : <input style="width: 50%" type="text" id="nrm"/> <button type="button" onclick="loadDoc()" id="btn">Cari</button>
+				<br/><br/><br/><strong>Hasil Pencarian</strong><br/>
+				Nama : <input style="width: 50%" type="text" id="nama" value=""/>
+				<br/>
+				NIK : <input style="width: 50%" type="text" id="nik" value=""/>
+				<br/>
+				Alamat : <input style="width: 50%" type="text" id="alamat" value=""/>
+				<br/>
+				Tanggal Lahir : <input style="width: 50%" type="text" id="tanggalLahir" value=""/>
+				<br/>
+				Kelamin : <input style="width: 50%" type="text" id="kelamin" value=""/>
+				<br/><br/>
+</center>
+
+                        <script>
+                            function loadDoc() {
+
+                                var url = "http://202.94.83.190:8080/165314017RS/webresources/pasien/cariPasien?noRm=" + nrm.value;
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.open("GET", url, true);
+                                xhttp.send();
+                                xhttp.onreadystatechange = function () {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        var objj = JSON.parse(this.responseText);
+                                        document.getElementById("nama").value = objj.nama;
+                                        document.getElementById("nik").value = objj.nik;
+                                        document.getElementById("alamat").value = objj.alamat;
+ document.getElementById("tanggalLahir").value = objj.tanggalLahir;
+ document.getElementById("kelamin").value = objj.kelamin;
+
+
+                                    }
+                                };
+                            }
+
+
+                            function make_json(form) {
+                                var json = {
+                                    "tanggal": form.tanggal.value,
+                                    "noRm": form.nik.value,
+                                    "nama": form.nama.value,
+                                    "alamat": form.alamat.value,
+                                    "namaKlinik": form.namaKlinik.value
+                                };
+                                var html = JSON.stringify(json, 0, 100);
+
+                                var Url = "http://202.94.83.190:8080/165314017RS1/webresources/Antrian/addAntrian";
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('POST', Url, false);
+                                xhr.setRequestHeader("Content-type", "application/json");
+                                xhr.send(html);
+
+                                document.getElementById("berhasil").innerHTML = "Pendaftaran Berhasil";
+                                return false;
+                            }
+                        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

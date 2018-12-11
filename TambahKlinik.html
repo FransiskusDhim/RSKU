@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Tambah Klinik</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="index.html"><span></span></a></div>
+				<a href="#menu">Menu</a>
+<style>
+                </style>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+						<li><a href="index.html">Home</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login.html">Tambah Dokter</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login2.html">Tambah Klinik</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login3.html">Pendaftaran Pasien</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login4.html">Pendaftaran Antrian</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Cari.html">Cari Pasien</a></li>
+	<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Antrian.html">List Antrian</a></li>
+						<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Dokter.html">Dokter Spesialis</a></li>
+				<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Klinik.html">Klinik Spesialis</a></li>	
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/TentangKami.html">Tentang Kami</a></li>
+
+
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>Selamat Datang</p>
+						<h2>Tambah Klinik</h2>
+					</header>
+				</div>
+			</section>
+       <form onsubmit="return make_json(this);" style="border:1px solid #ccc" method="POST">
+                            <center>
+                                <tr><td>ID Klinik</td> <td>:</td> <td><input style="width: 50%" type="text" name="idKlinik" value=""/></td></tr>
+                                <tr><td>Nama</td> <td>:</td> <td><input style="width: 50%" type="text" name="nama" value=""/></td></tr>
+                                <tr><td>Spesialis</td> <td>:</td> <td><input style="width: 50%" type="text" name="spesialis" value=""/></td></tr>
+                            
+                            <br></br>
+                            <input type="submit" value="Tambah"/>
+                        </form>
+                        <pre id="berhasil">
+
+                        </pre></div></center>
+                    <script>
+                        function make_json(form) {
+                            var json = {
+                                "idKlinik": form.idKlinik.value,
+                                "nama": form.nama.value,
+                                "spesialis": form.spesialis.value
+                            };
+                            var html = JSON.stringify(json, 0, 100);
+
+                            var Url = "http://202.94.83.190:8080/165314017RS/webresources/Klinik/addKlinik";
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('POST', Url, false);
+                            xhr.setRequestHeader("Content-type", "application/json");
+                            xhr.send(html);
+
+                            document.getElementById("berhasil").innerHTML = "Pendaftaran Berhasil";
+                            return false;
+                        }
+
+                    </script>
+
+	</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+
+
+	</body>
+</html>

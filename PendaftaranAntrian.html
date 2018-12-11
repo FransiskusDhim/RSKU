@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Pendaftaran Antrian</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+      <style>
+            #tabel {
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 50%;
+            }
+
+            #tabel td, #tabel th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #tabel tr:nth-child(even){background-color: #f2f2f2;}
+
+            #tabel tr:hover {background-color: #ddd;}
+
+            #tabel th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: 	#778899;
+                color: white;
+            }
+        </style>
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="index.html"><span></span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login.html">Tambah Dokter</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login2.html">Tambah Klinik</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login3.html">Pendaftaran Pasien</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Login4.html">Pendaftaran Antrian</a></li>
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Cari.html">Cari Pasien</a></li>
+	<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Antrian.html">List Antrian</a></li>
+						<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Dokter.html">Dokter Spesialis</a></li>
+				<li><a href="http://it-projects.usd.ac.id/~165314017/RS/Klinik.html">Klinik Spesialis</a></li>	
+<li><a href="http://it-projects.usd.ac.id/~165314017/RS/TentangKami.html">Tentang Kami</a></li>
+
+
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>Selamat Datang</p>
+						<h2>Daftar Antrian</h2>
+					</header>
+				</div>
+			</section>
+
+   <form onsubmit="return make_json(this);" style="border:1px solid #ccc" method="POST">
+                            <div class="form-group">
+
+
+                                <div class="contact-form">
+                                    <table>
+
+                                    <table width="400px">
+                                        <tr><td>No Rekam Medis</td> <td>:</td> <td><input type="text" id="nrm"/> <button type="button" onclick="loadDoc()" id="btn">Cari</button></td></tr>
+
+
+                                   
+                                    
+                                        <tr><td>Nama</td> <td>:</td><td><input type="text" id="nama" value="" disabled/></td></tr>
+                                        <tr><td>NIK</td> <td>:</td><td><input type="text" id="nik" value="" disabled/></td></tr>
+                                        <tr><td>Alamat</td> <td>:</td><td><input type="text" id="alamat" value="" disabled/></td></tr>
+                                        <tr><td>Tanggal Rawat Jalan</td> <td>:</td><td><input type="Date" id="tanggal" value=""/></td></tr>
+                                        <tr><td>Nama Klinik</td> <td>:</td><td>
+                                                <select name="klinik" id=namaKlinik>
+                                                    <option style="color: black" label="--pilih klinik--"></option>
+                                                    <option style="color: black" label="anak">anak</option>
+                                                    <option style="color: black" label="mata">mata</option>
+                                                    <option style="color: black" label="gigi">gigi</option>
+                                                </select>
+                                            </td></tr>
+                                    </table>
+
+                                <center>    <input type="submit" value="Tambah"/>
+                                    <p id="berhasil">
+                                    </p>
+                                </div></center>
+                            </div>
+                        </form>
+
+                        <script>
+                            function loadDoc() {
+
+                                var url = "http://202.94.83.190:8080/165314017RS/webresources/pasien/cariPasien?noRm=" + nrm.value;
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.open("GET", url, true);
+                                xhttp.send();
+                                xhttp.onreadystatechange = function () {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        var objj = JSON.parse(this.responseText);
+                                        document.getElementById("nama").value = objj.nama;
+                                        document.getElementById("nik").value = objj.nik;
+                                        document.getElementById("alamat").value = objj.alamat;
+                                    }
+                                };
+                            }
+
+
+                            function make_json(form) {
+                                var json = {
+                                    "tanggal": form.tanggal.value,
+                                    "noRm": form.nik.value,
+                                    "nama": form.nama.value,
+                                    "alamat": form.alamat.value,
+                                    "namaKlinik": form.namaKlinik.value
+                                };
+                                var html = JSON.stringify(json, 0, 100);
+
+                                var Url = "http://202.94.83.190:8080/165314017RS1/webresources/Antrian/addAntrian";
+                                var xhr = new XMLHttpRequest();
+                                xhr.open('POST', Url, false);
+                                xhr.setRequestHeader("Content-type", "application/json");
+                                xhr.send(html);
+
+                                document.getElementById("berhasil").innerHTML = "Pendaftaran Berhasil";
+                                return false;
+                            }
+                        </script>
+                       </div>
+
+
+
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
